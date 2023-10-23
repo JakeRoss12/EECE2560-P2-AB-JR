@@ -31,3 +31,9 @@ class Card {
     int value;
     int suit; // 1=club, 2=diamond, 3=heart, 4=spade
 };
+
+Card::Card(int v, int s) {
+    value = v;
+    suit = s;
+};
+
