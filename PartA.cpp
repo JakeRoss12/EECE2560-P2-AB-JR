@@ -42,3 +42,8 @@ Card::Card(int v, int s) {
 void Card::setValue(int v) {
     value = v;
 };
+
+// Card Class: setSuit
+void Card::setSuit(int s) {
+    suit = s;
+};
