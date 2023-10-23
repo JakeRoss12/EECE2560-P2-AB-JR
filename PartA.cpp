@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+#include <list>
 //#include <vector>
 //#include <ctime>
 //#include <algorithm>
@@ -24,7 +26,7 @@ class Card {
     // Get suit of card
     int getSuit();
 
-    // Print card's value and suit
+    // Output
     friend ostream & operator<<(ostream&out, Card&A);
 
     private:
@@ -76,3 +78,20 @@ ostream & operator<<(ostream&out, Card&A) {
     out<<A.getValue()<<" of "<<suit_string<<"s.";
     return out;
 }
+
+// Deck Class
+//class Deck {
+    //public:
+
+    // Constructor
+    //Deck();
+
+    // Output
+    //friend ostream & operator<<(ostream&out, Deck&A);
+
+    // Shuffle
+    //void shuffle();
+
+    //private:
+    
+//}
