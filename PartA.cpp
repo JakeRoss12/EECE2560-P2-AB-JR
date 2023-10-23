@@ -47,3 +47,8 @@ void Card::setValue(int v) {
 void Card::setSuit(int s) {
     suit = s;
 };
+
+// Card Class: getValue
+int Card::getValue() {
+    return value;
+};
