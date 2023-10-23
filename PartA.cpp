@@ -36,24 +36,43 @@ class Card {
 Card::Card(int v, int s) {
     value = v;
     suit = s;
-};
+}
 
 // Card Class: setValue
 void Card::setValue(int v) {
     value = v;
-};
+}
 
 // Card Class: setSuit
 void Card::setSuit(int s) {
     suit = s;
-};
+}
 
 // Card Class: getValue
 int Card::getValue() {
     return value;
-};
+}
 
 // Card Class: getSuit
 int Card::getSuit() {
     return suit;
-};
+}
+
+// Card Class: output
+ostream & operator<<(ostream&out, Card&A) {
+    string suit_string;
+    if (A.getSuit() == 1) {
+        suit_string = "club";
+    }
+    if (A.getSuit() == 2) {
+        suit_string = "diamond";
+    }
+    if (A.getSuit() == 3) {
+        suit_string = "heart";
+    }
+    if (A.getSuit() == 4) {
+        suit_string = "spade";
+    }
+    out<<A.getValue()<<" of "<<suit_string<<"s.";
+    return out;
+}
