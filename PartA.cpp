@@ -52,3 +52,8 @@ void Card::setSuit(int s) {
 int Card::getValue() {
     return value;
 };
+
+// Card Class: getSuit
+int Card::getSuit() {
+    return suit;
+};
