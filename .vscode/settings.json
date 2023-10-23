@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "ctime": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "list": "cpp"
     }
 }

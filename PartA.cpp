@@ -80,18 +80,19 @@ ostream & operator<<(ostream&out, Card&A) {
 }
 
 // Deck Class
-//class Deck {
-    //public:
+class Deck {
+    public:
 
     // Constructor
-    //Deck();
+    Deck();
 
     // Output
-    //friend ostream & operator<<(ostream&out, Deck&A);
+    friend ostream & operator<<(ostream&out, Deck&A);
 
     // Shuffle
-    //void shuffle();
+    void shuffle();
 
-    //private:
-    
-//}
+    private:
+    list<Card> deck_obj;
+    Card* first_card = &(*deck_obj.begin());
+};
