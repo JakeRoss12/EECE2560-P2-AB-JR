@@ -31,14 +31,3 @@ class Card {
     int value;
     int suit; // 1=club, 2=diamond, 3=heart, 4=spade
 };
-
-// Card Class: Constructor
-Card::Card(int v, int s) {
-    value = v;
-    suit = s;
-};
-
-// Card Class: setValue
-void Card::setValue(int v) {
-    value = v;
-};
