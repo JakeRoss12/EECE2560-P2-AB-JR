@@ -11,8 +11,9 @@ using namespace std;
 class Card {
 public:
 
-    // Constructor
+    // Constructors
     Card(int v, int s);
+    Card(const Card& A);
 
     // Sets value of card
     void setValue(int v);
@@ -38,6 +39,11 @@ private:
 Card::Card(int v, int s) {
     value = v;
     suit = s;
+}
+
+Card::Card(const Card& A) {
+    value = A.getValue();
+    suit = A.getSuit();
 }
 
 // Card Class: setValue
