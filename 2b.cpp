@@ -11,8 +11,9 @@ using namespace std;
 class Card {
 public:
 
-    // Constructor
+    // Constructors
     Card(int v, int s);
+    Card(Card &A);
 
     // Sets value of card
     void setValue(int v);
@@ -28,6 +29,9 @@ public:
 
     // Output
     friend ostream &operator<<(ostream&out, const Card&A);
+    
+    // Assignment
+    Card &operator=(const Card &A);
 
 private:
     int value;
