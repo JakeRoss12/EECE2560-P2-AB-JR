@@ -175,6 +175,7 @@ Card Deck::deal() {
     Node* nextCard = first_card->next;
     delete first_card;
     first_card = nextCard;
+    return topCard;
 }
 
 // Output operator
@@ -221,7 +222,12 @@ int main() {
     cout << *deck;
 
     // Shuffles the deck
-    deck->shuffle();
+    //deck->shuffle();
+
+    Card topCard(1, 2);
+    topCard = deck->deal();
+
+    cout << "Top card pulled out: " << topCard << endl;
 
     cout << "\nCards in the deck after shuffling:" << endl;
     cout << *deck;
