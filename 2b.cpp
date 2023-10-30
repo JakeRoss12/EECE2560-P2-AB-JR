@@ -100,6 +100,12 @@ ostream &operator<<(ostream&out, const Card&A) {
     return out;
 }
 
+// Card Class: assignment
+Card& Card::operator=(const Card &A) {
+    value = A.getValue();
+    suit = A.getSuit();
+}
+
 // LinkedList Node
 class Node {
 
