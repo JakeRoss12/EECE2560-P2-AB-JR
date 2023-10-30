@@ -3,6 +3,7 @@
         "ctime": "cpp",
         "iosfwd": "cpp",
         "list": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "ostream": "cpp"
     }
 }

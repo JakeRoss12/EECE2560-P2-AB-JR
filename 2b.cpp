@@ -4,6 +4,7 @@
 #include <vector>
 #include <ctime>
 #include <algorithm>
+#include <limits>
 
 using namespace std;
 
@@ -228,24 +229,107 @@ void Deck::shuffle() {
     }
 }
 
+int checkInput() {
+    int userInput;
+    cin >> userInput;
+    while (!(userInput == 1 || userInput == 2)) {
+        if (cin.fail()) {
+            cout << "Please enter a '1' for yes or a '2' for no: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin >> userInput;
+        }
+        else {
+            cout << "Please enter a '1' for yes or a '2' for no: ";
+            cin >> userInput;
+        }
+    }
+    return userInput;
+}
+
+void playFlip(Deck& d) {
+    cout << "Welcome to Flip!" << endl;
+    int userInput;
+    cout << "Would you like to hear the rules of the game? (enter '1' for yes, '2' for no): ";
+    userInput = checkInput();
+    if (userInput == 1) {
+        cout << "You will be delt 24 cards from a shuffled deck, and you will be able to flip them over one at a time." << endl;
+        cout << "The goal of the game is to get as many points as possible! This is how points are awarded: " << endl;
+        cout << "\t10 points for an Ace.\n\t5 points for a King, Queen, or Jack.\n\t0 points for an 8, 9, or 10" << endl;
+        cout << "\tlose half your points for a 7.\n\tlose all your points for a 2, 3, 4, 5, or 6.\n\tAnd recieve 1 bonus point for any heart." << endl;
+        cout << "You will have the opportunity to end the game after any flip and keep your score.";
+    }
+    cout << endl << endl << "Okay, let's play!" << endl << endl;
+    cout << "Top 24 Cards: " << endl;
+    Node* firstCard = nullptr;
+    for (int i = 1; i <= 24; i++) {
+        Node* newNode = new Node(d.deal());
+        newNode->next = firstCard;
+        firstCard = newNode;
+    }
+    Node* current = firstCard;
+    int i = 1;
+    while (current) {
+        cout << "Card " << i << ": " << current->card << endl;
+        current = current->next;
+        i++;
+    }
+    cout << endl << "Remaining cards in the deck: " << endl << d << endl;
+    i = 0;
+    int userScore = 0;
+    userInput = 1;
+    while(userInput == 1) {
+        cout << "You drew: " << firstCard->card << " ";
+        if (firstCard->card.getValue() == 1) {
+            cout << "You get 10 points!" << endl;
+            userScore += 10;
+        }
+        else if (firstCard->card.getValue() <= 6) {
+            cout << "You lost all of your points. . ." << endl;
+            userScore = 0;
+        }
+        else if (firstCard->card.getValue() == 7) {
+            cout << "You lost half your points." << endl;
+            userScore /= 2;
+        }
+        else if (firstCard->card.getValue() <= 10) {
+            cout << "Your score doesn't change." << endl;
+        }
+        else {
+            cout << "You get 5 points." << endl;
+            userScore += 5;
+        }
+        if (firstCard->card.getSuit() == 3) {
+            cout << "You drew a heart, so you get 1 bonus point!" << endl;
+            userScore += 1;
+        }
+        i++;
+        if (i >= 24) {
+            cout << "That was the last card, the game is over." << endl << "Your final score was: " << userScore;
+        }
+        firstCard = firstCard->next;
+        cout << "Current Hand: " << endl;
+        Node* current = firstCard;
+        for (int j = 24; j > i; j--) {
+            cout << current->card << endl;
+            current = current->next;
+        }
+        cout << endl;
+    }
+
+   
+
+}
+
 int main() {
     // Creates deck class, and initializes
     Deck* deck = new Deck();
-    cout << "Cards in the deck before shuffling: \n" << endl;
-    cout << *deck;
+    
+    deck->shuffle();
+    deck->shuffle();
+    deck->shuffle();
 
-    // Shuffles the deck
-    //deck->shuffle();
+    cout << "Deck: " << *deck << endl;
 
-    //Card topCard(1, 2);
-    //topCard = deck->deal();
-
-    //cout << "Top card pulled out: " << topCard << endl;
-
-    Card replacement(1,1);
-    cout << "Replacement card: " << replacement << endl;
-    deck->replace(replacement);
-
-    cout << "\nCards in the deck after shuffling:" << endl;
-    cout << *deck;
+    playFlip(*deck);
 }
