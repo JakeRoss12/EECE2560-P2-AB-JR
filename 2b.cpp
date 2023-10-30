@@ -44,6 +44,12 @@ Card::Card(int v, int s) {
     suit = s;
 }
 
+// Card Class: Copy Constructor
+Card::Card(Card &A) {
+    value = A.getValue();
+    suit = A.getSuit();
+}
+
 // Card Class: setValue
 void Card::setValue(int v) {
     value = v;
