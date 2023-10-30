@@ -123,6 +123,9 @@ public:
     // Constructor: Initializes an empty deck and fills it with cards
     Deck();
 
+    // Destructor: Deallocates list of cards
+    ~Deck();
+
     // Output operator for deck objects
     friend ostream &operator<<(ostream &out, const Deck &A);
 
@@ -150,6 +153,17 @@ Deck::Deck() {
             first_card = newNode;
         }
     }
+}
+
+// Deck Class: Destructor
+Deck::~Deck() {
+    Node* current = first_card;
+    while(current) {
+        Node* nextNode = current->next;
+        delete current;
+        current = nextNode;
+    }
+    first_card = nullptr;
 }
 
 // Output operator
