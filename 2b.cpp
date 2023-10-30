@@ -205,14 +205,13 @@ void Deck::shuffle() {
 
 int main() {
     // Creates deck class, and initializes
-    Deck deck;
+    Deck* deck = new Deck();
     cout << "Cards in the deck before shuffling: \n" << endl;
-    cout << deck;
+    cout << *deck;
 
     // Shuffles the deck
-    deck.shuffle();
+    deck->shuffle();
 
     cout << "\nCards in the deck after shuffling:" << endl;
-    cout << deck;
-
+    cout << *deck;
 }
