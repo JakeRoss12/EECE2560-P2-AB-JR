@@ -30,6 +30,9 @@ public:
     // Output
     friend ostream &operator<<(ostream&out, const Card&A);
 
+    // Assignment
+    Card& operator=(const Card& A);
+
 private:
     int value;
     int suit; // 1=club, 2=diamond, 3=heart, 4=spade
@@ -94,6 +97,13 @@ ostream &operator<<(ostream&out, const Card&A) {
 
     out << value_string << " of " << suit_string << "s.";
     return out;
+}
+
+// Card Class: Assignment operator
+Card& Card::operator=(const Card& A) {
+    value = A.getValue();
+    suit = A.getSuit();
+    return *this;
 }
 
 // LinkedList Node
