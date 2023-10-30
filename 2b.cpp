@@ -129,6 +129,9 @@ public:
     // Deal: Returns the top card and removes it from deck
     Card deal();
 
+    // Replace: Places a card at the bottom of the deck
+    void replace(const Card& A);
+
     // Output operator for deck objects
     friend ostream &operator<<(ostream &out, const Deck &A);
 
@@ -178,6 +181,16 @@ Card Deck::deal() {
     return topCard;
 }
 
+// Deck Class: Replace
+void Deck::replace(const Card& A) {
+    Node* current = first_card;
+    Node* newNode = new Node(A);
+    while (current->next) {
+        current = current->next;
+    }
+    current->next = newNode;
+}
+
 // Output operator
 ostream &operator<<(ostream &out, const Deck &A) {
     Node* current = A.first_card;
@@ -224,10 +237,14 @@ int main() {
     // Shuffles the deck
     //deck->shuffle();
 
-    Card topCard(1, 2);
-    topCard = deck->deal();
+    //Card topCard(1, 2);
+    //topCard = deck->deal();
 
-    cout << "Top card pulled out: " << topCard << endl;
+    //cout << "Top card pulled out: " << topCard << endl;
+
+    Card replacement(1,1);
+    cout << "Replacement card: " << replacement << endl;
+    deck->replace(replacement);
 
     cout << "\nCards in the deck after shuffling:" << endl;
     cout << *deck;
