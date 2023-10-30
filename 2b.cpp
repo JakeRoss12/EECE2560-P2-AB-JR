@@ -126,6 +126,9 @@ public:
     // Destructor
     ~Deck();
 
+    // Deal: Returns the top card and removes it from deck
+    Card deal();
+
     // Output operator for deck objects
     friend ostream &operator<<(ostream &out, const Deck &A);
 
@@ -159,11 +162,19 @@ Deck::Deck() {
 Deck::~Deck() {
     Node* current = first_card;
     while(current) {
-        Node* nextNode = current->next;
+        Node* nextCard = current->next;
         delete current;
-        current = nextNode;
+        current = nextCard;
     }
     first_card = nullptr;
+}
+
+// Deck Class: Deal
+Card Deck::deal() {
+    Card topCard = first_card->card;
+    Node* nextCard = first_card->next;
+    delete first_card;
+    first_card = nextCard;
 }
 
 // Output operator
