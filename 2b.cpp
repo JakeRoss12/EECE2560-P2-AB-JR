@@ -252,6 +252,7 @@ void playFlip(Deck& d) {
     int userInput;
     cout << "Would you like to hear the rules of the game? (enter '1' for yes, '2' for no): ";
     userInput = checkInput();
+    cout << endl;
     if (userInput == 1) {
         cout << "You will be delt 24 cards from a shuffled deck, and you will be able to flip them over one at a time." << endl;
         cout << "The goal of the game is to get as many points as possible! This is how points are awarded: " << endl;
@@ -303,9 +304,11 @@ void playFlip(Deck& d) {
             cout << "You drew a heart, so you get 1 bonus point!" << endl;
             userScore += 1;
         }
+        d.replace(firstCard->card);
         i++;
         if (i >= 24) {
-            cout << "That was the last card, the game is over." << endl << "Your final score was: " << userScore;
+            cout << "That was the last card, the game is over." << endl << "Your final score was: " << userScore << endl;
+            break;
         }
         firstCard = firstCard->next;
         cout << "Current Hand: " << endl;
@@ -314,11 +317,16 @@ void playFlip(Deck& d) {
             cout << current->card << endl;
             current = current->next;
         }
-        cout << endl;
+        cout << "Your current score is: " << userScore << endl;
+        cout << "Cards left: " << 24-i << endl;
+        cout << "Would you like to draw another card? (enter '1' for yes, '2' for no) ";
+        userInput = checkInput();
+        cout << endl << endl;
     }
-
-   
-
+    if (i < 24) {
+        cout << "You exited with a final score of " << userScore << endl;
+    }
+    cout << "Thank you for playing!" << endl;
 }
 
 int main() {
@@ -328,8 +336,6 @@ int main() {
     deck->shuffle();
     deck->shuffle();
     deck->shuffle();
-
-    cout << "Deck: " << *deck << endl;
 
     playFlip(*deck);
 }
