@@ -254,7 +254,7 @@ void playFlip(Deck& d) {
     userInput = checkInput();
     cout << endl;
     if (userInput == 1) {
-        cout << "You will be delt 24 cards from a shuffled deck, and you will be able to flip them over one at a time." << endl;
+        cout << "You will be dealt 24 cards from a shuffled deck, and you will be able to flip them over one at a time." << endl;
         cout << "The goal of the game is to get as many points as possible! This is how points are awarded: " << endl;
         cout << "\t10 points for an Ace.\n\t5 points for a King, Queen, or Jack.\n\t0 points for an 8, 9, or 10" << endl;
         cout << "\tlose half your points for a 7.\n\tlose all your points for a 2, 3, 4, 5, or 6.\n\tAnd recieve 1 bonus point for any heart." << endl;
